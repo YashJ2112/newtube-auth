@@ -13,11 +13,6 @@ import { AuthModule } from './auth/auth.module';
     MongooseModule.forRoot(env.MONGO_URI, {
       useNewUrlParser: true,
     }),
-    // (process.env.MONGO_URI, {
-    //   useNewUrlParser: true,
-    //   useUnifiedTopology: true,
-    //   useCreateIndex: true,
-    // }),
     AuthModule,
   ],
   controllers: [AppController],
