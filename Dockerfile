@@ -1,13 +1,27 @@
-FROM node:16.14.0
+FROM node:12.19.0-alpine3.9 AS development
 
-RUN npm i -g @nestjs/cli
+WORKDIR /usr/src/app
 
-COPY package.json .
+COPY package*.json ./
 
-RUN yarn install
+RUN yarn install glob rimraf
+
+RUN yarn install --only=development
 
 COPY . .
 
-EXPOSE 3002
+RUN yarn build
 
-CMD ["nest", "start"]
+FROM node:12.19.0-alpine3.9 as production
+
+WORKDIR /usr/src/app
+
+COPY package*.json ./
+
+RUN yarn install --only=production
+
+COPY . .
+
+COPY --from=development /usr/src/app/dist ./dist
+
+CMD ["node", "dist/main"]
