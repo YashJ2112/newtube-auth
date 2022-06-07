@@ -2,9 +2,11 @@ FROM node:12.19.0-alpine3.9 AS development
 
 WORKDIR /usr/src/app
 
-COPY package*.json ./
+COPY package*.json yarn.lock ./
 
 RUN npm install glob rimraf
+
+RUN yarn --pure-lockfile
 
 RUN npm install --only=development
 
@@ -24,4 +26,5 @@ COPY . .
 
 COPY --from=development /usr/src/app/dist ./dist
 
-CMD ["node", "dist/main"]
+# CMD ["node", "dist/main"]
+CMD [ "yarn", "start:dev" ]
