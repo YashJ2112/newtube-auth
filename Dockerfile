@@ -1,36 +1,13 @@
-FROM node:12.19.0-alpine3.9 AS development
+FROM node:16.14.0
 
-WORKDIR /usr/src/app
+RUN npm i -g @nestjs/cli
 
-COPY package*.json yarn.lock ./
+COPY package.json .
 
-# RUN npm install glob rimraf
-
-# RUN yarn
-
-RUN yarn install --only=development
-
-# RUN npm install --only=development
+RUN yarn install
 
 COPY . .
 
-RUN npm run build
+EXPOSE 3002
 
-RUN yarn prebuild && yarn build
-
-FROM node:12.19.0-alpine3.9 as production
-
-WORKDIR /usr/src/app
-
-COPY package*.json yarn.lock ./
-
-# RUN npm install --only=production
-
-RUN yarn install --frozen-lockfile --only=production
-
-COPY . .
-
-COPY --from=development /usr/src/app/dist ./dist
-
-CMD ["node", "dist/main"]
-# CMD [ "yarn", "start:dev" ]
+CMD ["nest", "start"]
