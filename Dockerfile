@@ -4,7 +4,7 @@ WORKDIR /usr/src/app
 
 COPY package*.json ./
 
-RUN yarn install glob rimraf
+RUN npm install glob rimraf
 
 RUN yarn install --only=development
 
