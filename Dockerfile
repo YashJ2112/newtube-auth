@@ -10,7 +10,7 @@ RUN npm install --only=development
 
 COPY . .
 
-RUN npm build
+RUN npm run build
 
 FROM node:12.19.0-alpine3.9 as production
 
