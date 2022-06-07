@@ -8,7 +8,7 @@ COPY package*.json yarn.lock ./
 
 # RUN yarn
 
-RUN yarn install --frozen-lockfile --only=development
+RUN yarn install --only=development
 
 # RUN npm install --only=development
 
