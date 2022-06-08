@@ -4,7 +4,7 @@ version: '3'
 services:
   nest-auth:
     container_name: nest-auth
-    image: nest-auth:1.0.0
+    image: nest-auth:latest
     build:
       context: .
       dockerfile: Dockerfile
