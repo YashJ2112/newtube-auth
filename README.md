@@ -29,40 +29,37 @@
 ## Installation
 
 ```bash
-$ yarn install
+$ npm install
 ```
 
 ## Set up Youtube API Key
 
-Create a Google Developer Account (https://developers.google.com) unless you already have one and add the YouTube Data API key into the .env.example file and rename it to .env.
+Create a Google Developer Account (https://developers.google.com) unless you already have one and add the Google Oauth Key and Client Secret into the .env.example file and rename it to .env.
 
 ## Running the app
 
 ```bash
 # development
-$ yarn start
+$ npm run start
 
 # watch mode
-$ yarn start:dev
+$ npm run start:dev
 
 # production mode
-$ yarn start:prod
+$ npm run start:prod
 ```
 
 ## Test
 
 ```bash
 # unit tests
-$ yarn test
+$ npm run test
 
 # e2e tests
-$ yarn test:e2e
-
-# unit tests
-$ yarn test:unit
+$ npm run test:e2e
 
 # test coverage
-$ yarn test:cov
+$ npm run test:cov
 ```
 
 ## Support
